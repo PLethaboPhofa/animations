@@ -1,0 +1,69 @@
+@import './animations.scss';
+
+$unit : 400;
+$width : $unit;
+$height : $unit;
+$multiplier:200;
+$vmultiplier:50;
+$middle: 40vh;
+$right: 89vw;
+.main{
+
+    .content{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        
+
+        
+        .holder {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: $width;
+            height: $height;
+        }
+
+        .mright{
+            @extend .holder;
+            width: $width;
+            height: $height;
+            left: $right;
+            top: $middle;
+        }
+
+        .tright-holder{
+            @extend .holder;
+            left: $right;
+            top:0;
+        }
+
+        .bolt-holder{
+            @extend .holder;
+        }
+
+        .arrows-holder {
+            @extend .bolt-holder;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .turbine-holder {
+            @extend .bolt-holder;
+            left: $unit*6;
+            top: 0;
+
+        }
+
+        .battery-holder {
+            @extend .bolt-holder;
+            left: $unit*4;
+        }
+
+        .wind-holder {
+            @extend .bolt-holder;
+            left: $unit*3;
+            top: $unit*3;
+        }
+    }
+}
