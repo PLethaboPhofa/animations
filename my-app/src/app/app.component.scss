@@ -1,69 +1,119 @@
 @import './animations.scss';
 
-$unit : 400;
+
+
+$unit : 808px;
 $width : $unit;
 $height : $unit;
 $multiplier:200;
 $vmultiplier:50;
-$middle: 40vh;
-$right: 89vw;
-.main{
+$hmiddle: 30vw;
+
+$bottom: 75vh;
+$vmiddle: calc($bottom/2);
+$right: 85vw;
+
+$arrow-left: calc($height/2);
+$arrow-width:$right;
+.main{    
+
+    #paths {
+        z-index: -1;
+        position: absolute;
+        overflow: visible;
+        ::ng-deep .path {
+            fill: none;
+            stroke: #000000;
+            stroke-width: 6;
+        }
+      
+      }
 
     .content{
         position: relative;
         width: 100%;
         height: 100%;
-        
 
+        .bordered{
+            //border: 3px solid black; 
+        }
+
+        .arrow{
+            position: absolute;
+            height: fit-content;
+        }
+
+        .first{
+            @extend .arrow;
+            top: 0;
+            left: 0;
+            $arrow-width:$right;
+            height: 100px;
+            width: $arrow-width
+        }
         
         .holder {
+            @extend .bordered;
             position: absolute;
             left: 0;
             top: 0;
             width: $width;
             height: $height;
+            *{
+                border: none;
+            }
         }
 
-        .mright{
+        .sun{
+            @extend .holder
+        }
+
+        .wind{
             @extend .holder;
             width: $width;
             height: $height;
-            left: $right;
-            top: $middle;
+            left: 0;
+            top: calc($bottom/3);
         }
 
-        .tright-holder{
+        .battery{
             @extend .holder;
-            left: $right;
-            top:0;
+            width: $width;
+            height: $height;
+            left: 0;
+            top: calc($bottom/1.50);
         }
 
-        .bolt-holder{
+        .tower{
             @extend .holder;
+            width: $width;
+            height: $height;
+            left: 0;
+            top: $bottom;
         }
 
-        .arrows-holder {
-            @extend .bolt-holder;
-            width: 100vw;
-            height: 100vh;
+        
+        .bulb{
+            @extend .holder;
+            width: $width;
+            height: $height;
+            left: calc($right);
+            top: $vmiddle;
         }
 
-        .turbine-holder {
-            @extend .bolt-holder;
-            left: $unit*6;
-            top: 0;
-
+        .text{
+            @extend .bordered;
+            position: absolute;
+            height: $height;
+            top: $vmiddle;
+            left: calc($right/2);
+            font-size: 200px;
+            width: fit-content;
+            text-align: center;
+            vertical-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        .battery-holder {
-            @extend .bolt-holder;
-            left: $unit*4;
-        }
-
-        .wind-holder {
-            @extend .bolt-holder;
-            left: $unit*3;
-            top: $unit*3;
-        }
-    }
+   }
 }
