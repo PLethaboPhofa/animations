@@ -10,3 +10,19 @@
       transform: rotate(359deg);
     }
 }
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    stroke: #0f0f0f;
+  }
+  50% {
+    stroke: #3acd61;
+  }
+  100% {
+    stroke: #000000;
+  }
+}

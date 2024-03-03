@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
     let bezierWeight = 0.5;
     let oldPaths = paths?.children || [];
     for (let a = oldPaths.length - 1; a >= 0; a--) {
-      paths?.removeChild(oldPaths[a]);
+      //paths?.removeChild(oldPaths[a]);
     }
 
     let x1, y1, x4, y4, dx, x2, x3, path, start, end;
