@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'my-app';
-  connections2:Record<string,HTMLElement>[] = [];
+  connections2: Record<string, HTMLElement>[] = [];
 
   ngOnInit(): void {
     this.collectElements();
@@ -24,12 +24,17 @@ export class AppComponent implements OnInit {
     let text = document.getElementsByClassName('text').item(0);
 
     for (let count = 0; count < holders.length; count++) {
-      let holder = holders.item(count) as HTMLElement
+      let holder = holders.item(count) as HTMLElement;
       this.connections2.push({
         start: holder,
         end: text as HTMLElement,
       });
     }
+    this.connections2.push({
+      start: document.getElementsByClassName('bulb').item(0) as HTMLElement,
+      end: text as HTMLElement,
+    });
+    console.log(this.connections2);
   }
 
   connectElements() {
@@ -48,9 +53,9 @@ export class AppComponent implements OnInit {
       end = this.connections2[a]?.['end'];
 
       x1 = start.offsetLeft + start.scrollWidth / 2 - padding;
-      y1 = start.offsetTop + start.clientHeight / 2 - padding;
+      y1 = start.offsetTop + start.clientHeight / 2 - padding+30;
       x4 = end.offsetLeft + start.clientWidth / 2 - 450;
-      y4 = end.offsetTop + start.clientHeight/ 2 - padding +10;
+      y4 = end.offsetTop + start.clientHeight / 2 - padding + 30;
       dx = Math.abs(x4 - x1) * bezierWeight;
 
       if (x4 < x1) {
@@ -61,17 +66,26 @@ export class AppComponent implements OnInit {
         x3 = x4 - dx;
       }
 
-      let data = `M${x1+400} ${y1} C ${x2} ${y1} ${x3} ${y4} ${x4} ${y4}`;
+      if (a == this.connections2.length - 1) {
+        x1 = start.offsetLeft + start.scrollWidth / 2 - 900;
+        y1 = start.offsetTop + start.clientHeight / 2 - padding+30;
+        x4 = end.offsetLeft + start.clientWidth / 2 + 1000;
+        y4 = end.offsetTop + start.clientHeight / 2 - padding + 30;
 
-      path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', data);
-      path.setAttribute('class', 'path');
-      if(a!=this.connections2.length-1){
-        // path.setAttribute('style', 'fill: none;stroke: #000000;stroke-width: 6;');
+        let data = `M${x1 + 500} ${y1} C ${x2} ${y1} ${x3} ${y4} ${x4} ${y4}`;
+
+        path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', data);
+        path.setAttribute('class', 'path');
+        paths?.appendChild(path);
+      } else {
+        let data = `M${x1 + 425} ${y1} C ${x2} ${y1} ${x3} ${y4} ${x4} ${y4}`;
+
+        path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', data);
+        path.setAttribute('class', 'path');
         paths?.appendChild(path);
       }
-
-      
     }
   }
 }

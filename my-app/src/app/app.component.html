@@ -41,6 +41,12 @@
           height="32" />
       </svg>
     </div>
+    <div class="sun-explain-text">
+      Inconsitent
+    </div>
+    <div class="wind-explain-text">
+      Inconsitent
+    </div>
     <div #holder class="col1 wind">
       <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -62,6 +68,9 @@
           d="M12 10.0362V4.79549C12 4.35616 12.3562 4 12.7955 4H12.9889C14.24 4 15.4028 4.6445 16.0659 5.70541C16.8737 6.99791 16.5443 8.69505 15.3117 9.59153L13.5882 10.845C12.9272 11.3257 12 10.8535 12 10.0362Z"
           stroke="#222222" />
       </svg>
+    </div>
+    <div class="tower-explain-text">
+      Costly and subject to outages
     </div>
     <div class="col1 tower">
       <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -86,6 +95,8 @@
         </g>
       </svg>
     </div>
+    <div [innerText]="'1. Supply depends on charge \n 2. Charging needs to be \n managed'" style="white-space: pre-line" class="battery-explain-text">
+    </div>
     <div class="col1 battery">
       <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -93,9 +104,12 @@
           stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
-    <div class="col1 text">
+    <div class="text-explain-text">
+      Consistent and cost effective supply
+    </div>
+    <div class="text">
       <div>
-        Smart meter
+        Smart micro grid
       </div>
     </div>
   </div>

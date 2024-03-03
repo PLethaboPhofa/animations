@@ -64,8 +64,24 @@ $arrow-width:$right;
             }
         }
 
+        .explain-text{
+            position: absolute;
+            left: $width - 0 !important;
+            margin-top:0x;
+            width: 50% !important;
+            height: fit-content !important;
+            white-space:nowrap;
+            font-size: 100px !important;
+        }
+
         .sun{
             @extend .holder
+        }
+
+        .sun-explain-text{
+            @extend .explain-text;
+            @extend .sun;
+            margin-top: calc($width/2)-150;
         }
 
         .wind{
@@ -76,6 +92,12 @@ $arrow-width:$right;
             top: calc($bottom/3);
         }
 
+        .wind-explain-text{
+            @extend .explain-text;
+            @extend .wind;
+            margin-top: calc($width/2)-150;
+        }
+
         .battery{
             @extend .holder;
             width: $width;
@@ -83,13 +105,26 @@ $arrow-width:$right;
             left: 0;
             top: calc($bottom/1.50);
         }
+        
+        .battery-explain-text{
+            @extend .explain-text;
+            @extend .battery;
+            margin-top: calc($width/2)+50;
+        }
 
         .tower{
             @extend .holder;
             width: $width;
+            max-width: $width;
             height: $height;
             left: 0;
             top: $bottom;
+        }
+
+        .tower-explain-text{
+            @extend .explain-text;
+            @extend .tower;
+            margin-top: calc($width/2)+50;
         }
 
         
@@ -100,6 +135,7 @@ $arrow-width:$right;
             left: calc($right);
             top: $vmiddle;
         }
+
 
         .text{
             @extend .bordered;
@@ -115,5 +151,14 @@ $arrow-width:$right;
             align-items: center;
             justify-content: center;
         }
+
+        
+        .text-explain-text{
+            @extend .explain-text;
+            @extend .text;
+            margin-top: calc($width/2)-150;
+            left: calc($right/2)+5 !important;
+        }
+
    }
 }
